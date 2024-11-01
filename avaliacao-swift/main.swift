@@ -7,20 +7,20 @@
 
 import Foundation
 
-executarPrograma()
+runProgram()
 
-func executarPrograma() {
-    var continuar = true
+func runProgram() {
+    var continueControl = true
     print("--CONTATOS--")
-    while continuar {
-        mainMenu()
+    while continueControl {
+        showMenu()
         
-        guard let opcao = readLine(), let escolha = Int(opcao) else {
+        guard let option = readLine(), let choice = Int(option) else {
             print("Opção inválida.")
             continue
         }
         
-        switch escolha {
+        switch choice {
         case 1:
             print("incluir")
         case 2:
@@ -32,7 +32,7 @@ func executarPrograma() {
         case 5:
             print("exibir todas as pessoas")
         case 6:
-            continuar = false
+            continueControl = false
             print("Saindo do programa.")
         default:
             print("Opção inválida.")
@@ -40,7 +40,7 @@ func executarPrograma() {
     }
 }
 
-func mainMenu() {
+func showMenu() {
     print("""
     
     -Opções do Menu-
