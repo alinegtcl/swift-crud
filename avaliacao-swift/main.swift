@@ -25,7 +25,7 @@ func runProgram() {
         case 1:
             createPerson()
         case 2:
-            print("alterar")
+            updatePerson()
         case 3:
             print("apagar")
         case 4:
@@ -78,6 +78,27 @@ func createPerson() {
     print("\nPessoa criada com sucesso!")
 }
 
+func updatePerson() {
+    print("\nDigite o nome da pessoa que deseja alterar:")
+    guard let name = readLine(), !name.isEmpty else { return }
+    
+    if let _ = people[name] {
+        print("\nDigite o novo email:")
+        guard let newEmail = readLine(), !newEmail.isEmpty else { return }
+        
+        print("\nDigite o novo telefone:")
+        guard let newPhone = readLine(), !newPhone.isEmpty else { return }
+        
+        print("\nDigite a nova idade:")
+        guard let newAge = readLine(), !newAge.isEmpty else { return }
+        
+        people[name] = [newEmail, newPhone, newAge]
+        print("\nDados atualizados com sucesso!")
+    } else {
+        print("\nPessoa não encontrada.")
+    }
+}
+
 func showPerson() {
     print("Digite o nome para exibir:")
     guard let name = readLine(), !name.isEmpty else { return }
@@ -91,3 +112,4 @@ func showPerson() {
         print("Pessoa não encontrada.")
     }
 }
+
