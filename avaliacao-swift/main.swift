@@ -29,7 +29,7 @@ func runProgram() {
         case 3:
             print("apagar")
         case 4:
-            print("exibir uma pessoa")
+            showPerson()
         case 5:
             print("exibir todas as pessoas")
         case 6:
@@ -76,4 +76,18 @@ func createPerson() {
     
     people[name] = [email, phone, age]
     print("\nPessoa criada com sucesso!")
+}
+
+func showPerson() {
+    print("Digite o nome para exibir:")
+    guard let name = readLine(), !name.isEmpty else { return }
+    
+    if let details = people[name] {
+        print("\nNome: \(name)")
+        print("Email: \(details[0])")
+        print("Telefone: \(details[1])")
+        print("Idade: \(details[2])")
+    } else {
+        print("Pessoa não encontrada.")
+    }
 }
