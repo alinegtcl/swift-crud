@@ -7,6 +7,7 @@
 
 import Foundation
 
+var people: [String: [String]] = [:]
 runProgram()
 
 func runProgram() {
@@ -22,7 +23,7 @@ func runProgram() {
         
         switch choice {
         case 1:
-            print("incluir")
+            createPerson()
         case 2:
             print("alterar")
         case 3:
@@ -53,4 +54,26 @@ func showMenu() {
     
     Escolha uma opção:
     """)
+}
+
+func createPerson() {
+    print("\nDigite o nome:")
+    guard let name = readLine(), !name.isEmpty else { return }
+    
+    if people.keys.contains(name) {
+        print("Erro: Uma pessoa com esse nome já existe.")
+        return
+    }
+    
+    print("\nDigite o email:")
+    guard let email = readLine(), !email.isEmpty else { return }
+    
+    print("\nDigite o telefone:")
+    guard let phone = readLine(), !phone.isEmpty else { return }
+    
+    print("\nDigite a idade:")
+    guard let age = readLine(), !age.isEmpty else { return }
+    
+    people[name] = [email, phone, age]
+    print("\nPessoa criada com sucesso!")
 }
