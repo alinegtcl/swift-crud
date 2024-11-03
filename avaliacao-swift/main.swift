@@ -27,7 +27,7 @@ func runProgram() {
         case 2:
             updatePerson()
         case 3:
-            print("apagar")
+            deletePerson()
         case 4:
             showPerson()
         case 5:
@@ -99,6 +99,17 @@ func updatePerson() {
     }
 }
 
+func deletePerson() {
+    print("\nDigite o nome da pessoa que deseja apagar:")
+    guard let name = readLine(), !name.isEmpty else { return }
+    
+    if people.removeValue(forKey: name) != nil {
+        print("\nPessoa removida com sucesso!")
+    } else {
+        print("\nPessoa não encontrada.")
+    }
+}
+
 func showPerson() {
     print("Digite o nome para exibir:")
     guard let name = readLine(), !name.isEmpty else { return }
@@ -109,7 +120,7 @@ func showPerson() {
         print("Telefone: \(details[1])")
         print("Idade: \(details[2])")
     } else {
-        print("Pessoa não encontrada.")
+        print("\nPessoa não encontrada.")
     }
 }
 
