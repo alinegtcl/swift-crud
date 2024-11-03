@@ -31,10 +31,10 @@ func runProgram() {
         case 4:
             showPerson()
         case 5:
-            print("exibir todas as pessoas")
+            showAllPeople()
         case 6:
             continueControl = false
-            print("Saindo do programa.")
+            print("Programa finalizado.")
         default:
             print("Opção inválida.")
         }
@@ -61,7 +61,7 @@ func createPerson() {
     guard let name = readLine(), !name.isEmpty else { return }
     
     if people.keys.contains(name) {
-        print("Erro: Uma pessoa com esse nome já existe.")
+        print("Já existe uma pessoa com esse nome.")
         return
     }
     
@@ -75,7 +75,7 @@ func createPerson() {
     guard let age = readLine(), !age.isEmpty else { return }
     
     people[name] = [email, phone, age]
-    print("\nPessoa criada com sucesso!")
+    print("\nPessoa adicionada com sucesso!")
 }
 
 func updatePerson() {
@@ -124,3 +124,16 @@ func showPerson() {
     }
 }
 
+func showAllPeople() {
+    if people.isEmpty {
+        print("\nNão há pessoas cadastradas.")
+    } else {
+        print("\nDados de todas as pessoas cadastradas:")
+        for (name, details) in people {
+            print("\nNome: \(name)")
+            print("Email: \(details[0])")
+            print("Telefone: \(details[1])")
+            print("Idade: \(details[2])")
+        }
+    }
+}
